@@ -5,24 +5,23 @@ const util = require('util')
  * Uncomment specific calls below to test them.  Only test on a non-production sites.
  */
 
-var app_api_key = process.env.WEBHOOKS_APP_API_KEY;
-var access_key = process.env.WEBHOOKS_ACCESS_KEY;
-var api_signing_key = process.env.WEBHOOKS_API_SIGNING_KEY;
-var which_dashboard = process.env.WEBHOOKS_WHICH_ONE;
-var integration_key = process.env.WEBHOOKS_INTEGRATION_KEY;
+const app_api_key = process.env.WEBHOOKS_APP_API_KEY;
+const access_key = process.env.WEBHOOKS_ACCESS_KEY;
+const api_signing_key = process.env.WEBHOOKS_API_SIGNING_KEY;
+const which_dashboard = process.env.WEBHOOKS_WHICH_ONE;
 
 /**
  * Setting PROD to true calculate a unique nonce every time
  * Setting DEBUG to true outputs everything that is going on.
  * @type {{PROD: boolean, DEBUG: boolean}}
  */
-var options = {
+let options = {
     PROD: true,
     DEBUG: false,
     API_URL: 'https://api.authy.com'
 };
 
-var webhooks = require('./webhooks-api.js')(app_api_key, access_key, api_signing_key, options);
+let webhooks = require('./webhooks-api.js')(app_api_key, access_key, api_signing_key, options);
 
 if (!webhooks) {
     console.log("You need to setup the API keys in demo.env then `source demo.env`");
@@ -64,15 +63,15 @@ if (!webhooks) {
  * user_removed
  */
 
-var events = ['totp_token_sent'];
-var callback_url = 'https://authyse.ngrok.io/api/installed';
-var name = 'totp-token-sent';
-// webhooks.createWebhooks(events, callback_url, name);
+let webhook_url = 'https://[YOUR_NGROK_HERE]/api/webhooked';
+let events = ['phone_verification_started'];
+let name = 'phone_verification_started';
+// webhooks.createWebhooks(events, webhook_url, name);
 
 /**
  * Delete Webhook
  */
-var webhook_id = "WH_#####";
+let webhook_id = "WH_#####";
 // webhooks.deleteWebhook(webhook_id);
 
 
@@ -81,9 +80,9 @@ var webhook_id = "WH_#####";
  * 
  * The signing key should be available alongside your other webhook information when listing your webhooks.
  */
-var webhook_signing_key = '';
-var encoded_message = '';
-// var decoded = webhooks.verifyJWTResponse(encoded_message, webhook_signing_key);
+let webhook_signing_key = '';
+let encoded_message = '';
+// let decoded = webhooks.verifyJWTResponse(encoded_message, webhook_signing_key);
 // console.log(util.inspect(decoded, false, null));
 
 /**
