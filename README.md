@@ -85,7 +85,7 @@ webhooks.listWebhooks();
 }]}
 ```
 
-### Create Webhooks
+### Create a Webhook
 You'll want to select a public event from the list below, set the callback URL for the webhook and lastly name the webhook.
 ```javascript
 var events = ['user_added'];
