@@ -8,7 +8,6 @@ const util = require('util')
 const app_api_key = process.env.WEBHOOKS_APP_API_KEY;
 const access_key = process.env.WEBHOOKS_ACCESS_KEY;
 const api_signing_key = process.env.WEBHOOKS_API_SIGNING_KEY;
-const which_dashboard = process.env.WEBHOOKS_WHICH_ONE;
 
 /**
  * Setting PROD to true calculate a unique nonce every time
@@ -28,8 +27,6 @@ if (!webhooks) {
     console.log("You can find these API keys in your Authy Dashboard under the API keys section.");
     console.log("If the 3 keys are not present, you need to create a ticket requesting them to be enabled");
     process.exit(1);
-} else {
-    console.log("You're testing " + which_dashboard);
 }
 
 

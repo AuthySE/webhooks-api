@@ -41,7 +41,7 @@ curl -X POST "https://api.authy.com/protected/json/phones/verification/start? \
       -H "X-Authy-API-Key: $WEBHOOKS_AUTHY_API_KEY"
 ```
 
-### Public Events to Trigger Webhooks
+## Public Webhook Events
 You can trigger webhooks using the following events.  You can use multiple events in a single webhook.
 
 * account_recovery_approved
@@ -68,7 +68,7 @@ You can trigger webhooks using the following events.  You can use multiple event
 * user_phone_changed
 * user_removed
 
-**Listing Webhooks:**
+### Listing Webhooks
 ```javascript
 webhooks.listWebhooks();
 ```
@@ -85,7 +85,7 @@ webhooks.listWebhooks();
 }]}
 ```
 
-**Create Webhooks:**
+### Create Webhooks
 You'll want to select a public event from the list below, set the callback URL for the webhook and lastly name the webhook.
 ```javascript
 var events = ['user_added'];
@@ -108,7 +108,7 @@ webhooks.createWebhooks(events, callback_url, name);
 "success":true
 }
 ```
-**Deleting a Webhook**
+### Deleting a Webhook
 You'll need the unique identifier for your webhook to initate a delete.
 ```javascript
 var webhook_id = "WH_#####-####";
@@ -118,7 +118,7 @@ webhooks.deleteWebhook(webhook_id);
 ```
 {"message":"Webhook deleted","success":true}
 ```
-**Verify a Webhook**
+### Verify a Webhook
 ```javascript
 var webhook_signing_key = ''; // unique key associated with a specific webhook
 var encoded_message = '';     // this is the message passed from the callback
